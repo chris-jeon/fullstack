@@ -5,4 +5,6 @@ Within the README, I will be updating my progress for this open source [Full Sta
 
 6/14: Started on the Full Stack! Went through part0, learned, reviewed the basics of HTML, CSS, and how to navigate through the "Inspect." I will be reading over the exercise links for part0 the next day :)
 
+6/15: Read through the HTML, CSS, and web forms from Mozilla, and finished the rest of part 0's exercises. Briefly went over part 1's reading!
+
 
