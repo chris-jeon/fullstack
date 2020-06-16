@@ -12,8 +12,77 @@ Learn about the basics of HTML forms from Mozilla
 0.4: new note
 Create a similar diagram depicting the situation where the user creates a new note on page https://fullstack-exampleapp.herokuapp.com/notes by writing something into the text field and clicking the submit button
 
+	---------------------------------SUBMIT--------------------------
+	browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note
+	server-->browser: new_note
+	browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/notes
+	server-->browser: HTML-code
+	browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+	server-->browser: main.css
+	browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.js
+	server-->browser: main.js
+
+	note over browser:
+	browser executes the "submit" post and sends it to /notes
+	/notes receives ("GET") the data from server
+	end note
+	
+	browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+	server-->browser: [{ content: "HTML is easy", date: "2019-05-23" }, ...] 
+
+	note over browser:
+	browser executes the event handler
+	that renders notes to display
+	end note
+
 0.5: Single page app
 Create a diagram depicting the situation where the user goes to the single page app
 
+	browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa
+	server-->browser: spa
+	browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+	server-->browser: main.css
+	browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+	server-->browser: spa.js
+
+	note over browser:
+	browser starts executing the spa code
+	which requests JSON data from server
+	end note
+
+	browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+	server-->browser: [{"content":"HTML is easy","date":"2019-05-23T17:30:31.098Z"}, ...]
+
+	note over browser:
+	browser executes the event handler
+	that renders notes to display
+	end note
+
 0.6: New note
 Create a diagram depicting the situation where user creates a new note using the single page version of the app
+
+    server-->browser: spa
+    browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/main.css
+    server-->browser: main.css
+    browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/spa.js
+    server-->browser: spa.js
+
+    note over browser:
+    browser starts executing the spa code
+    which requests JSON data from server
+    end note
+
+    browser->server: HTTP GET https://fullstack-exampleapp.herokuapp.com/data.json
+    server-->browser: [{"content":"HTML is easy","date":"2019-05-23T17:30:31.098Z"}, ...]
+
+    note over browser:
+    browser executes the event handler
+    that renders notes to display
+    end note
+
+	browser->server: HTTP POST https://fullstack-exampleapp.herokuapp.com/new_note_spa
+	server-->browser: new_note_spa & {content: "yeet", date: "2020-06-16T05:14:44.619Z"}
+
+	note over browser:
+	browser "POSTS" the new data
+	/new_note_spa receives the data from server
